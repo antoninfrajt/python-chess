@@ -6,7 +6,7 @@ class Pawn(Piece):
 	def __init__(self, pos, color, board):
 		super().__init__(pos, color, board)
 
-		img_path = 'data/imgs/' + color[0] + '_pawn.png'
+		img_path = 'data/imgs/' + color[0] + '_pawn.png' if color in ["white","black"] else 'data/imgs/b_pawn.png'
 		self.img = pygame.image.load(img_path)
 		self.img = pygame.transform.scale(self.img, (board.square_width - 35, board.square_height - 35))
 
@@ -18,7 +18,7 @@ class Pawn(Piece):
 		moves = []
 
 		# move forward
-		if self.color == 'white':
+		if self.color == 'white' or self.color == "friend":
 			moves.append((0, -1))
 			if not self.has_moved:
 				moves.append((0, -2))
@@ -77,7 +77,6 @@ class Pawn(Piece):
 				if square.occupying_piece != None:
 					if square.occupying_piece.color != self.color:
 						output.append(square)
-
 		return output
 
 	def attacking_squares(self, board):

@@ -24,7 +24,11 @@ class Square:
 			self.width,
 			self.height
 		)
-
+	def __eq__(self, other):
+		if self.occupying_piece == other.occupying_piece and self.pos == other.pos:
+			return True
+		else:
+			return False
 
 	def get_coord(self):
 		columns = 'abcdefgh'

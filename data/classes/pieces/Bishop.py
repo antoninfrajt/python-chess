@@ -6,7 +6,7 @@ class Bishop(Piece):
 	def __init__(self, pos, color, board):
 		super().__init__(pos, color, board)
 
-		img_path = 'data/imgs/' + color[0] + '_bishop.png'
+		img_path = 'data/imgs/' + color[0] + '_bishop.png' if color in ["white","black"] else 'data/imgs/b_bishop.png'
 		self.img = pygame.image.load(img_path)
 		self.img = pygame.transform.scale(self.img, (board.square_width - 20, board.square_height - 20))
 

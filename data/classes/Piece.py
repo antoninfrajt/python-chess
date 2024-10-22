@@ -7,6 +7,12 @@ class Piece:
 		self.y = pos[1]
 		self.color = color
 		self.has_moved = False
+	def __eq__(self, other):
+		if other != None:
+			if self.notation == other.notation and self.color == other.color:
+				return True
+			else:
+				return False
 
 	def move(self, board, square, force=False):
 
@@ -68,7 +74,6 @@ class Piece:
 		for square in self.get_moves(board):
 			if not board.is_in_check(self.color, board_change=[self.pos, square.pos]):
 				output.append(square)
-
 		return output
 
 

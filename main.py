@@ -4,13 +4,13 @@ from data.classes.Board import Board
 
 pygame.init()
 
-WINDOW_SIZE = (1000, 1000)
+WINDOW_SIZE = (700, 700)
 screen = pygame.display.set_mode(WINDOW_SIZE)
 
 board = Board(WINDOW_SIZE[0], WINDOW_SIZE[1])
 
 def draw(display):
-	display.fill('white')
+	display.fill("white")
 
 	board.draw(display)
 
@@ -34,5 +34,7 @@ while running:
 	elif board.is_in_checkmate('white'):
 		print('Black wins!')
 		running = False
-
+	elif board.is_in_pat('black') or board.is_in_pat('white'):
+		print('Draw')
+		running = False
 	draw(screen)
